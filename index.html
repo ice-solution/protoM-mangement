@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bupa webapp</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .avatars {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .avatar {
+            text-align: center;
+        }
+        .avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .videos-container {
+            display: flex;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .person-videos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        .video-thumbnail {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #videoPlayer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: none;
+        }
+        #videoPlayer video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="avatars">
+        <div class="avatar">
+            <img src="tom.jpg" alt="Tom">
+            <p>Doctor</p>
+        </div>
+        <div class="avatar">
+            <img src="flona.jpg" alt="Fiona">
+            <p>Fiona</p>
+        </div>
+        <div class="avatar">
+            <img src="jay.jpg" alt="Jay">
+            <p>Jay</p>
+        </div>
+    </div>
+    <div class="videos-container">
+        <div class="person-videos">
+            <div class="video-thumbnail" data-video="video1.mp4"></div>
+            <div class="video-thumbnail" data-video="tom_video2.mp4"></div>
+            <div class="video-thumbnail" data-video="tom_video3.mp4"></div>
+        </div>
+        <div class="person-videos">
+            <div class="video-thumbnail" data-video="videos/fiona_1.mp4"></div>
+            <div class="video-thumbnail" data-video="mary_video2.mp4"></div>
+            <div class="video-thumbnail" data-video="mary_video3.mp4"></div>
+        </div>
+        
+    </div>
+    <div id="videoPlayer">
+        <video></video>
+    </div>
+
+    <script>
+        const thumbnails = document.querySelectorAll('.video-thumbnail');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const video = videoPlayer.querySelector('video');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const videoSrc = thumbnail.getAttribute('data-video');
+                video.src = videoSrc;
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    videoPlayer.style.display = 'block';
+                    document.body.style.opacity = 1;
+                    video.play();
+                }, 500);
+            });
+        });
+
+        video.addEventListener('ended', () => {
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+                videoPlayer.style.display = 'none';
+                document.body.style.opacity = 1;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
