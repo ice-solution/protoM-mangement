@@ -21,6 +21,9 @@
         .avatar {
             text-align: center;
         }
+        .avatar p{
+            font-size:40px;
+        }
         .avatar img {
             width: 80px;
             height: 80px;
@@ -38,12 +41,18 @@
             flex: 1;
         }
         .video-thumbnail {
-            width: 120px;
-            height: 120px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             background-color: #ddd;
             margin: 10px;
             cursor: pointer;
+            display: flex; /* 使用 flexbox */
+            align-items: center; /* 垂直置中 */
+            justify-content: center; /* 水平置中 */
+            text-align: center; /* 文字置中 */
+            font-size: 14px; /* 調整字體大小 */
+            color: #000; /* 文字顏色 */
         }
         #videoPlayer {
             position: fixed;
@@ -65,27 +74,23 @@
     <div class="avatars">
         <div class="avatar">
             <img src="tom.jpg" alt="Tom">
-            <p>Doctor</p>
+            <p>Doctor Chow</p>
         </div>
         <div class="avatar">
             <img src="flona.jpg" alt="Fiona">
             <p>Fiona</p>
         </div>
-        <div class="avatar">
-            <img src="jay.jpg" alt="Jay">
-            <p>Jay</p>
-        </div>
     </div>
     <div class="videos-container">
         <div class="person-videos">
-            <div class="video-thumbnail" data-video="video1.mp4"></div>
-            <div class="video-thumbnail" data-video="tom_video2.mp4"></div>
-            <div class="video-thumbnail" data-video="tom_video3.mp4"></div>
+            <div class="video-thumbnail" data-video="videos/dr_chow/dr_chow_english_script 1.mp4">ENGLISH</div>
+            <div class="video-thumbnail" data-video="tom_video2.mp4">FRENCH</div>
+            <div class="video-thumbnail" data-video="tom_video3.mp4">CANTONESE</div>
         </div>
         <div class="person-videos">
-            <div class="video-thumbnail" data-video="videos/fiona_1.mp4"></div>
-            <div class="video-thumbnail" data-video="mary_video2.mp4"></div>
-            <div class="video-thumbnail" data-video="mary_video3.mp4"></div>
+            <div class="video-thumbnail" data-video="videos/fiona/english_script_1.mp4">ENGLISH</div>
+            <div class="video-thumbnail" data-video="videos/fiona/spanish_script_1.mp4">SPANISH</div>
+            <div class="video-thumbnail" data-video="videos/fiona/catonese_script_1.mp4">CANTONESE</div>
         </div>
         
     </div>
